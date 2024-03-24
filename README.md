@@ -16,6 +16,7 @@ elements
     - can add and display isotopes
     - can verify if two elements are the same or not
     - can copy elements
+    - can be verified using asserts
 
 - Compound class
     - can add, modify and display
@@ -24,6 +25,7 @@ elements
     - can deduce the formula
     - can return an array with the number of distinct elements
     - can copy compounds
+    - can be verified using asserts
 
 - Reaction class
     - can add, modify and display reactions

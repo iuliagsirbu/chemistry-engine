@@ -1,0 +1,25 @@
+2 1
+HydrogenMolecule 2
+Hydrogen 1 H 1.00784
+Hydrogen 1 H 1.00784
+
+SulfurAtom 1
+Sulfur 16 S 32.065
+
+HydrogenSulfide 3
+Hydrogen 1 H 1.00784
+Hydrogen 1 H 1.00784
+Sulfur 16 S 32.065
+
+2 1
+HydrogenMolecule 2
+Hydrogen 1 H 1.00784
+Hydrogen 1 H 1.00784
+
+ChlorineMolecule 2
+Chlorine 17 Cl 35.5
+Chlorine 17 Cl 35.5
+
+HydrochloricAcid 2
+Hydrogen 1 H 1.00784
+Chlorine 17 Cl 35.5
