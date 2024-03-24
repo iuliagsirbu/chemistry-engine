@@ -5,7 +5,52 @@ Reaction::Reaction() = default;
 Reaction::Reaction(const std::vector<Compound> &reactants, const std::vector<Compound> &products) : reactants(
         reactants), products(products) {}
 
-Reaction::~Reaction() = default;
+Reaction::~Reaction() {
+    reactants.clear();
+    products.clear();
+}
+
+Reaction::Reaction(const Reaction &other) {
+    reactants = other.reactants;
+    products = other.products;
+}
+
+Reaction &Reaction::operator=(const Reaction &other) {
+    if (this != &other) {
+        reactants = other.reactants;
+        products = other.products;
+    }
+    return *this;
+}
+
+std::istream &operator>>(std::istream &in, Reaction &react) {
+    int noReactants, noProducts;
+    in >> noReactants >> noProducts;
+    Compound compToRead;
+    for (int i = 0; i < noReactants; i++) {
+        compToRead = Compound();
+        in >> compToRead;
+        react.reactants.push_back(compToRead);
+    }
+    for (int i = 0; i < noProducts; i++) {
+        compToRead = Compound();
+        in >> compToRead;
+        react.products.push_back(compToRead);
+    }
+    return in;
+}
+
+std::ostream &operator<<(std::ostream &out, const Reaction &react) {
+    out << "The reactants of this reaction are: \n";
+    for (const auto &reactant: react.reactants) {
+        out << "    -" << reactant << "\n";
+    }
+    out << "The products of this reaction are: \n";
+    for (const auto &product: react.products) {
+        out << "    -" << product << "\n";
+    }
+    return out;
+}
 
 std::vector<int> Reaction::balanceReaction() const {
     // simple reactions like A + B -> C, otherwise not working
@@ -53,3 +98,4 @@ int Reaction::gcd(int x, int y) const {
         return x;
     return gcd(y, x % y);
 }
+

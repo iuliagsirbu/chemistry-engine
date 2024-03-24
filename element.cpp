@@ -17,7 +17,13 @@ Element::Element(const std::string &name, int atomicNumber, const std::string &a
     this->atomicMass = atomicMass;
 }
 
-Element::~Element() = default;
+Element::~Element() {
+    name = "None";
+    atomicNumber = 0;
+    atomicSymbol = "None";
+    atomicMass = 0.0;
+    electronConfiguration = "...";
+}
 
 const std::string Element::getName() const {
     return name;
@@ -33,6 +39,14 @@ int Element::getAtomicNumber() const {
 
 double Element::getAtomicMass() const {
     return atomicMass;
+}
+
+void Element::setName(const std::string &newName) {
+    name = newName;
+}
+
+void Element::setAtomicMass(double newAtomicMass) {
+    atomicMass = newAtomicMass;
 }
 
 Element::Element(const Element &other) {
@@ -62,7 +76,7 @@ std::istream &operator>>(std::istream &in, Element &elem) {
     return in;
 }
 
-std::ostream &operator<<(std::ostream &out, Element &elem) {
+std::ostream &operator<<(std::ostream &out, const Element &elem) {
     out << "Element: " << elem.name << ", Z: " << elem.atomicNumber << ", symbol: " << elem.atomicSymbol << ", A: "
         << elem.atomicMass;
     return out;

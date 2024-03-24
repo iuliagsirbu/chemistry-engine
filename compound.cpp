@@ -1,15 +1,51 @@
 #include "include/compound.h"
 
-Compound::Compound() = default;
+Compound::Compound() {
+    name = "None";
+}
 
 Compound::Compound(const std::string &name, const std::vector<Element> &elements) :
         name(name), elements(elements) {}
 
-Compound::~Compound() = default;
+Compound::~Compound() {
+    name = "";
+    elements.clear();
+}
 
-const std::string Compound::getName() const { return name; }
+std::string Compound::getName() const { return name; }
 
 std::vector<Element> Compound::getElements() const { return elements; }
+
+Compound::Compound(const Compound &other) {
+    this->name = other.name;
+    this->elements = other.elements;
+}
+
+Compound &Compound::operator=(const Compound &other) {
+    if (this != &other) {
+        name = other.name;
+        elements = other.elements;
+    }
+    return *this;
+}
+
+std::istream &operator>>(std::istream &in, Compound &comp) {
+    in >> comp.name;
+    int noElements;
+    in >> noElements;
+    Element elemToRead;
+    for (int i = 0; i < noElements; i++) {
+        in >> elemToRead;
+        comp.elements.push_back(elemToRead);
+    }
+    return in;
+}
+
+std::ostream &operator<<(std::ostream &out, const Compound &comp) {
+    out << "Compound: " << comp.name << ", Formula: " << comp.calculateFormula() << ", Mass: " << comp.calculateMass()
+        << "\n";
+    return out;
+}
 
 double Compound::calculateMass() const {
     double mass = 0.0;
@@ -35,6 +71,8 @@ std::string Compound::calculateFormula() const {
             formula += currentElement.getAtomicSymbol();
         }
     }
+    if (noElement != 1)
+        formula += std::to_string(noElement);
     return formula;
 }
 
@@ -55,9 +93,4 @@ std::vector<int> Compound::atomsNumber() const {
     return atoms;
 }
 
-std::ostream &operator<<(std::ostream &out, Compound &comp) {
-    out << "Compound: " << comp.name << ", Formula: " << comp.calculateFormula() << ", Mass: " << comp.calculateMass()
-        << "\n";
-    return out;
-}
 

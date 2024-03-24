@@ -15,6 +15,14 @@ public:
 
     ~Reaction();
 
+    Reaction(const Reaction &other);
+
+    Reaction &operator=(const Reaction &other);
+
+    friend std::istream &operator>>(std::istream &in, Reaction &react);
+
+    friend std::ostream &operator<<(std::ostream &out, const Reaction &react);
+
     void displayReaction() const;
 
     std::vector<int> balanceReaction() const;

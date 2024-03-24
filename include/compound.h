@@ -15,17 +15,23 @@ public:
 
     ~Compound();
 
-    const std::string getName() const;
+    std::string getName() const;
 
     std::vector<Element> getElements() const;
+
+    Compound(const Compound &other);
+
+    Compound &operator=(const Compound &other);
+
+    friend std::istream &operator>>(std::istream &in, Compound &comp);
+
+    friend std::ostream &operator<<(std::ostream &out, const Compound &comp);
 
     double calculateMass() const;
 
     std::string calculateFormula() const;
 
     std::vector<int> atomsNumber() const;
-
-    friend std::ostream &operator<<(std::ostream &out, Compound &comp);
 };
 
 #endif //CHEMISTRY_ENGINE_COMPOUND_H

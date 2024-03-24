@@ -29,6 +29,11 @@ public:
 
     double getAtomicMass() const;
 
+    // setters
+    void setName(const std::string &newName);
+
+    void setAtomicMass(double newAtomicMass);
+
     // copy constructor
     Element(const Element &other);
 
@@ -39,7 +44,7 @@ public:
 
     friend std::istream &operator>>(std::istream &in, Element &elem);
 
-    friend std::ostream &operator<<(std::ostream &out, Element &elem);
+    friend std::ostream &operator<<(std::ostream &out, const Element &elem);
 
     // other methods
     void addIsotope(int mass, double abundance);
