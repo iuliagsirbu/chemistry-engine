@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cassert>
 #include "include/element.h"
 #include "include/compound.h"
 #include "include/reaction.h"
@@ -51,6 +52,16 @@ int main() {
     oxygen.addIsotope(18, 0.20);
     oxygen.displayIsotopes();
 
+    // asserts
+    std::cout << "\nASSERTS: \n";
+    assert(hydrogen.getName() == "Hydrogen");
+    std::cout << "Element Checkpoint #1\n";
+    assert(sulfur.getName() == "Sulfur");
+    std::cout << "Element Checkpoint #2\n";
+    assert(chlorine.getAtomicNumber() == 17);
+    std::cout << "Element Checkpoint #3\n";
+    assert(hydrogenCopy.getAtomicMass() == 1.00784);
+    std::cout << "Element Checkpoint #4\n";
 
     // ~~~COMPOUND CLASS~~~
     std::cout << "\n\n";
@@ -62,10 +73,10 @@ int main() {
     std::cout << water << "\n";
     Compound water2(water);
     std::cout << water2 << "\n";
-    Compound hydrochloricAcid, sulfuricAcid;
+    Compound hydrochloricAcid, hydrogenSulfide;
 
     // reading
-    compin >> hydrochloricAcid >> sulfuricAcid;
+    compin >> hydrochloricAcid >> hydrogenSulfide;
     std::cout << hydrochloricAcid << "\n";
 
     // methods
@@ -73,7 +84,18 @@ int main() {
     for (const auto &element: testGetElements) {
         std::cout << element << "\n";
     }
-    std::cout << sulfuricAcid.calculateFormula() << " " << sulfuricAcid.calculateMass() << "\n";
+    std::cout << hydrogenSulfide.calculateFormula() << " " << hydrogenSulfide.calculateMass() << "\n";
+
+    // asserts
+    std::cout << "\nASSERTS: \n";
+    assert(water.getName() == "Water");
+    std::cout << "Compound Checkpoint #1\n";
+    assert(hydrogenSulfide.getName() == "HydrogenSulfide");
+    std::cout << "Compound Checkpoint #2\n";
+    assert(hydrochloricAcid.calculateFormula() == "HCl");
+    std::cout << "Compound Checkpoint #3\n";
+    assert(int(hydrochloricAcid.calculateMass()) == 36);
+    std::cout << "Compound Checkpoint #4\n";
 
 
     // ~~~REACTION CLASS~~~
@@ -99,5 +121,6 @@ int main() {
     sulfuricReaction.displayReaction();
     hydrochloricReaction.displayReaction();
     waterReaction.displayReaction();
+
     return 0;
 }
