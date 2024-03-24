@@ -1,4 +1,4 @@
-### C++ ###
+# C++
 
 # Prerequisites
 *.d
@@ -33,7 +33,7 @@
 *.out
 *.app
 
-### CLion ###
+# CLion
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
@@ -112,7 +112,7 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### CLion Patch ###
+# CLion Patch
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 # *.iml
@@ -146,7 +146,7 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
-### EXTRA ###
+# EXTRA
 # Ignore all files without an extension
 *
 !*.*
